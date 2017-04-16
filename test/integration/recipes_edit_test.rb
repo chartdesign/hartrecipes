@@ -2,8 +2,8 @@ require 'test_helper'
 
 class RecipesEditTest < ActionDispatch::IntegrationTest
   def setup
-    @user = Chef.create!(chefname: "chefcookA1", email: "chefA1@itson.com")
-    @recipe = Recipe.create(name: "potato soup", description: "good cheesy soup to warm you up", chef: @user)
+    @chef = Chef.create!(chefname: "chefcookA1", email: "chefA1@itson.com")
+    @recipe = Recipe.create(name: "potato soup", description: "good cheesy soup to warm you up", chef: @chef)
   end
   
   test 'reject invalid recipe update' do
@@ -25,6 +25,6 @@ class RecipesEditTest < ActionDispatch::IntegrationTest
     assert_not flash.empty?
     @recipe.reload
     assert_match updated_name, @recipe.name
-    assert_match updated description, @recipe.description
+    assert_match updated_description, @recipe.description
   end
 end
