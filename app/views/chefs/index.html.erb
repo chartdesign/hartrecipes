@@ -1,0 +1,10 @@
+<%= render 'shared/page_title', title: "Showing all Chefs" %>
+<% @chef.each do |cook| %>
+  <div class="row">
+    <div class="col-md-2">
+      <section class="chef_info center">
+        <%= cook.chefname %>
+      </section>
+    </div>
+  </div>
+<% end %>
